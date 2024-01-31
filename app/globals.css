@@ -73,4 +73,10 @@
   body {
     @apply bg-background text-foreground;
   }
+  .text-red {
+    @apply text-[#E4002B]
+  }
+  .bg-red {
+    @apply bg-[#E4002B]
+  }
 }
