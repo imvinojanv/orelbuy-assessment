@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+    images: {
+        domains: [
+            "cdnstatic.orelbuy.lk"
+        ]
+    }
+};
 
 export default nextConfig;
