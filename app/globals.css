@@ -80,3 +80,7 @@
     @apply bg-[#E4002B]
   }
 }
+
+.nav-shadow {
+  box-shadow: rgba(43, 52, 69, 0.1) 0px 4px 16px;
+}

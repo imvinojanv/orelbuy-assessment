@@ -1,4 +1,5 @@
 import Header from "@/components/header";
+import Navbar from "@/components/navbar";
 
 const HomeLayout = ({
     children
@@ -7,7 +8,8 @@ const HomeLayout = ({
 }) => {
     return (
         <main className="w-full min-h-screen">
-            <Header/>
+            <Header />
+            <Navbar />
             <div className="mx-auto max-w-screen-xl text-red">
                 {children}
             </div>
