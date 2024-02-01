@@ -1,7 +1,7 @@
 import Header from "@/components/header";
 import Navbar from "@/components/navbar";
 
-const HomeLayout = ({
+const HomeLayout = async ({
     children
 }: {
     children: React.ReactNode;
@@ -10,7 +10,7 @@ const HomeLayout = ({
         <main className="w-full min-h-screen">
             <Header />
             <Navbar />
-            <div className="mx-auto max-w-screen-xl text-red">
+            <div>
                 {children}
             </div>
         </main>
