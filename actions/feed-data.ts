@@ -5,6 +5,8 @@ import { db } from "@/lib/db";
 interface Beer {
     name: string;
     image_url: string;
+    description: string;
+    tagline: string;
 }
 
 export const feedData = async () => {
@@ -16,6 +18,8 @@ export const feedData = async () => {
             const filteredData: Beer[] = data.map(item => ({
                 name: item.name,
                 image_url: item.image_url,
+                description: item.description,
+                tagline: item.tagline
             }));
             if (filteredData && filteredData.length > 0) {
                 const res = await db.product.createMany({

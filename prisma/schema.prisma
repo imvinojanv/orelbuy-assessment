@@ -23,4 +23,6 @@ model Product {
   id String @id @default(uuid())
   name String @db.Text
   image_url String @db.Text
+  description String @db.Text
+  tagline String @db.Text
 }

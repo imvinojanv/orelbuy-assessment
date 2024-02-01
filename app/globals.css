@@ -79,6 +79,9 @@
   .bg-red {
     @apply bg-[#E4002B]
   }
+  .border-red {
+    @apply border-[#E4002B]
+  }
 }
 
 .nav-shadow {

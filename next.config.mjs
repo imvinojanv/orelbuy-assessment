@@ -2,7 +2,8 @@
 const nextConfig = {
     images: {
         domains: [
-            "cdnstatic.orelbuy.lk"
+            "cdnstatic.orelbuy.lk",
+            "images.punkapi.com"
         ]
     }
 };
