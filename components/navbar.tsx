@@ -1,14 +1,8 @@
-import Image from "next/image"
-import { Input } from "./ui/input"
-import { ChevronDown, Search } from "lucide-react"
+import Image from "next/image";
+import { ChevronDown, Search } from "lucide-react";
 
-const navLinks = [
-    { name: "Flash Deals" },
-    { name: "Special Offers" },
-    { name: "Merchants" },
-    { name: "Brands" },
-    { name: "Sell On OREL Buy" },
-];
+import { Input } from "@/components/ui/input";
+import { navLinks } from "@/constants";
 
 const Navbar = () => {
   return (
@@ -52,7 +46,7 @@ const Navbar = () => {
             </div>
             <div className="mt-6 w-full justify-between items-center hidden md:flex">
                 <div className="flex items-center gap-8">
-                    <div className="px-5 py-2 w-[260px] rounded-md bg-red text-white flex justify-between items-center">
+                    <div className="px-5 py-2 w-[270px] rounded-md bg-red text-white flex justify-between items-center">
                         <div className="flex gap-4">
                             <Image 
                                 src='/category.svg'
