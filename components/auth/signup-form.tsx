@@ -17,6 +17,9 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { useToast } from "@/components/ui/use-toast";
+import { cn } from "@/lib/utils";
+import { Loader2 } from 'lucide-react';
 
 const FormSchema = z
   .object({
@@ -35,6 +38,7 @@ const FormSchema = z
 
 const SignUpForm = () => {
   const router = useRouter();
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -46,22 +50,38 @@ const SignUpForm = () => {
     },
   });
 
+  const { isSubmitting, isValid } = form.formState;
+
   const onSubmit = async (values: z.infer<typeof FormSchema>) => {
     try {
-      const response = await axios.post(`/api/user`, values);
-
-      if (response) {
-        router.push('/sign-in')
-        console.log("SIGNUP_RES:", response);
-      }
-    } catch (error) {
-      console.log("Failed to sign up", error);
-    }
+      const response = await axios.post(`/api/auth/sign-up`, values);
+      console.log("CREARE_USER", response);
+      toast({
+        title: "Successfully created new user",
+      });
+    } catch (error: any) {
+      toast({
+        title: "🚫Something went wrong",
+        description: (
+          <div className='mt-2 bg-slate-200 py-2 px-3 md:w-[336px] rounded-md'>
+            <code className="text-slate-800">
+              ERROR: {error.message}
+            </code>
+          </div>
+        ),
+      });
+    } finally {
+      form.reset();
+      router.push('/sign-in');
+    };
   };
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='w-full'>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className='w-full'
+      >
         <div className='space-y-2'>
           <FormField
             control={form.control}
@@ -70,7 +90,10 @@ const SignUpForm = () => {
               <FormItem>
                 <FormLabel>Username</FormLabel>
                 <FormControl>
-                  <Input placeholder='johndoe' {...field} />
+                  <Input
+                    placeholder='imvinojanv'
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -83,7 +106,10 @@ const SignUpForm = () => {
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input placeholder='mail@example.com' {...field} />
+                  <Input
+                    placeholder='vinojan@example.com'
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -124,7 +150,12 @@ const SignUpForm = () => {
             )}
           />
         </div>
-        <Button className='w-full mt-6' type='submit'>
+        <Button
+          type="submit"
+          disabled={!isValid || isSubmitting}
+          className="w-full mt-6 flex gap-2 pr-5"
+        >
+          <Loader2 className={cn("animate-spin w-5 h-5 hidden", isSubmitting && "flex")} />
           Sign up
         </Button>
       </form>

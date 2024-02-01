@@ -1,3 +1,7 @@
+export const EXP_MAX_AGE = 60 * 60 * 24 * 30;         // 30 days
+
+export const JWT_SECRET = process.env.JWT_SECRET || "";
+
 export const navLinks = [
     { name: "Flash Deals" },
     { name: "Special Offers" },
