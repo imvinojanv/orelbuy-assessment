@@ -4,6 +4,8 @@ import { db } from "@/lib/db";
 import { feedData } from "@/actions/feed-data";
 import AdBanner from "@/components/ad-banner";
 import Hero from "@/components/hero";
+import Products from "@/components/products";
+import { fetchBeers } from "@/actions/fetch-products";
 
 const Home = async () => {
 
@@ -11,19 +13,15 @@ const Home = async () => {
   // const response = await feedData();
   // console.log("RES", response);
 
+  // const products = await db.product.findMany();
+  const products = await fetchBeers(1);
+
   return (
     <main className="w-full">
       <Hero />
       <div className="bg-slate-100">
         <AdBanner />
-        <div className="mx-auto px-4 max-w-screen-xl flex flex-col">
-          <div className="w-full flex">
-            <div className="md:w-[290px] h-full hidden md:flex">
-              
-            </div>
-            <p>Hello</p>
-          </div>
-        </div>
+        <Products products={products} />
       </div>
     </main>
   );
