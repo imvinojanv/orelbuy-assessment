@@ -68,65 +68,71 @@ const SignInForm = () => {
   };
 
   return (
-    <Form {...form}>
-      <form 
-        onSubmit={form.handleSubmit(onSubmit)} 
-        className='w-full'
-      >
-        <div className='space-y-2'>
-          <FormField
-            control={form.control}
-            name='email'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input 
-                    placeholder='vinojan@example.com' 
-                    {...field} 
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name='password'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Password</FormLabel>
-                <FormControl>
-                  <Input
-                    type='password'
-                    placeholder='Enter your password'
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-        <Button
-          type="submit"
-          disabled={!isValid || isSubmitting}
-          className="w-full mt-6 flex gap-2 pr-5"
-        >
-          <Loader2 className={cn("animate-spin w-5 h-5 hidden", isSubmitting && "flex")} />
-          Sign up
-        </Button>
-      </form>
-      <div className='mx-auto my-4 flex w-full items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:block after:h-px after:flex-grow after:bg-stone-400'>
-        or
+    <div className='bg-white shadow-lg rounded-lg p-12 w-full md:min-w-[480px]'>
+      <div className='mb-8 w-full flex flex-col items-center'>
+        <h2 className='text-xl font-bold text-slate-900'>OrelBuy</h2>
+        <p className='mt-1 text-sm font-medium text-slate-700'>Hello, Welcome to OrelBuy</p>
       </div>
-      <p className='text-center text-sm text-gray-600 mt-2'>
-        If you don&apos;t have an account, please&nbsp;
-        <Link className='text-blue-500 hover:underline' href='/sign-up'>
-          Sign up
-        </Link>
-      </p>
-    </Form>
+      <Form {...form}>
+        <form 
+          onSubmit={form.handleSubmit(onSubmit)} 
+          className='w-full'
+        >
+          <div className='space-y-2'>
+            <FormField
+              control={form.control}
+              name='email'
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input 
+                      placeholder='vinojan@example.com' 
+                      {...field} 
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name='password'
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input
+                      type='password'
+                      placeholder='Enter your password'
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <Button
+            type="submit"
+            disabled={!isValid || isSubmitting}
+            className="w-full mt-6 flex gap-2 pr-5"
+          >
+            <Loader2 className={cn("animate-spin w-5 h-5 hidden", isSubmitting && "flex")} />
+            Log in
+          </Button>
+        </form>
+        <div className='mx-auto my-4 flex w-full items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:block after:h-px after:flex-grow after:bg-stone-400'>
+          or
+        </div>
+        <p className='text-center text-sm text-gray-600 mt-2'>
+          Don&apos;t have an account?&nbsp;
+          <Link className='text-red hover:underline' href='/sign-up'>
+            Sign up
+          </Link>
+        </p>
+      </Form>
+    </div>
   );
 };
 
