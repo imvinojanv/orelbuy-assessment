@@ -3,7 +3,8 @@
 # OrelBuy : Assessment Application for OREL IT
 
 <img width="1920" alt="OrelBuy-HomePage" src="https://github.com/imvinojanv/orelbuy-assessment/assets/48822560/efbaaaab-c587-41d9-8e96-82c5c5919057">
-<br />
+<br /><br />
+
 - 🔒 Secure authentication (Token-based)
 - 📋 Protected routes.
 - 📱 Standard User interface with Responsiveness.
